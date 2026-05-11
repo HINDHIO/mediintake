@@ -7,13 +7,17 @@ import os
 from datetime import datetime
 
 from openai import OpenAI
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 from services.prompt_builder import SYSTEM_PROMPT, build_prompt
 from services.validation import normalize_analysis
 from utils.constants import MODEL_NAME, ANALYSIS_TEMPERATURE, MAX_TOKENS
 
-load_dotenv()
 
 
 def _get_client() -> OpenAI:

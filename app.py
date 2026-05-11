@@ -10,7 +10,11 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 from services.ai_analysis import run_analysis
 from ui.assessment_tab import render_assessment_tab
@@ -21,7 +25,6 @@ from ui.styles import inject_styles
 from utils.constants import VITALS_CONFIG
 
 # ── Bootstrap ─────────────────────────────────────────────────────────────────
-load_dotenv()
 
 st.set_page_config(
     page_title="MediIntake · AI Medical Intake",

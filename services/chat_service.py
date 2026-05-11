@@ -5,11 +5,14 @@
 import os
 
 from openai import OpenAI
-from dotenv import load_dotenv
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 from utils.constants import MODEL_NAME, CHAT_TEMPERATURE
 
-load_dotenv()
 
 
 def _get_client() -> OpenAI:
